@@ -28,6 +28,7 @@ jobs:
       - uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           custom_instructions: |
             the project already setup with all dependencies installed.
             the server already running at localhost:3000. logs from it are being written to logs.txt. if needed, you can query the db with the 'sqlite3' cli. if needed, use the mcp__playwright set of tools to launch a browser and interact with app.
