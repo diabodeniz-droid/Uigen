@@ -24,7 +24,10 @@ jobs:
       - name: Project setup
         run: |
           npm run setup
-          npm run dev:daemon
+          npm run dev:daemon > logs.txt 2>&1 &
+          echo "Waiting for dev server..."
+          timeout 60 bash -c 'until curl -sf http://localhost:3000 > /dev/null; do sleep 2; done'
+          echo "Dev server ready"
       - uses: anthropics/claude-code-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
