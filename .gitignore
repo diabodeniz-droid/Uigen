@@ -51,5 +51,6 @@ next-env.d.ts
 /prisma/dev.db-journal
 
 # local tool data
-/.claude/
+/.claude/*
+!/.claude/settings.local.json
 /.playwright-mcp/
