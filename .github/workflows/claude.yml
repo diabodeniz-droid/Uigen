@@ -33,13 +33,39 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           custom_instructions: |
-            the project already setup with all dependencies installed.
-            the server already running at localhost:3000. logs from it are being written to logs.txt. if needed, you can query the db with the 'sqlite3' cli. if needed, use the mcp__playwright set of tools to launch a browser and interact with app.
+            The project is already set up with all dependencies installed.
+            The dev server is running at http://localhost:3000. Its logs are written to logs.txt.
+            If needed, query the database with the sqlite3 CLI (db path: prisma/dev.db).
+            Use the mcp__playwright__* tools to launch a browser and interact with the app.
           mcp_config: |
             {
               "playwright": {
                 "command": "npx",
-                "args": ["playwright/mcp@latest", "--allowed-origins", "http://localhost:3000,cdn.tailwindcss.com,esm.sh"]
+                "args": [
+                  "@playwright/mcp@latest",
+                  "--allowed-origins",
+                  "http://localhost:3000;https://cdn.tailwindcss.com;https://esm.sh"
+                ]
               }
             }
-          allowed_tools: "bash(npm:*),bash(sqlite3:*),mcp__playwright__browser__snapshot,mcp__playwright__browser__html,mcp__playwright__browser__screenshot"
+          allowed_tools: >-
+            bash(npm:*),
+            bash(sqlite3:*),
+            bash(curl:*),
+            mcp__playwright__browser_navigate,
+            mcp__playwright__browser_snapshot,
+            mcp__playwright__browser_take_screenshot,
+            mcp__playwright__browser_click,
+            mcp__playwright__browser_type,
+            mcp__playwright__browser_fill_form,
+            mcp__playwright__browser_hover,
+            mcp__playwright__browser_press_key,
+            mcp__playwright__browser_select_option,
+            mcp__playwright__browser_evaluate,
+            mcp__playwright__browser_console_messages,
+            mcp__playwright__browser_network_requests,
+            mcp__playwright__browser_wait_for,
+            mcp__playwright__browser_resize,
+            mcp__playwright__browser_tabs,
+            mcp__playwright__browser_navigate_back,
+            mcp__playwright__browser_close
