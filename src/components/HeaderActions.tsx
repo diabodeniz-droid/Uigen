@@ -43,7 +43,7 @@ export function HeaderActions({ user, projectId }: HeaderActionsProps) {
   const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
-  const [initialLoading, setInitialLoading] = useState(true);
+  const [initialLoading, setInitialLoading] = useState(!!(user && projectId));
   const [searchQuery, setSearchQuery] = useState("");
 
   // Load projects initially
