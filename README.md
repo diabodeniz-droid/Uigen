@@ -65,3 +65,13 @@ Open [http://localhost:3000](http://localhost:3000)
 - Prisma with SQLite
 - Anthropic Claude AI
 - Vercel AI SDK
+
+## Contributing
+
+Contributions are welcome! To propose a change:
+
+1. Fork the repository and create a feature branch (`git checkout -b feature/my-change`)
+2. Make your changes and run the test suite with `npm test`
+3. Commit using a descriptive message and open a pull request against `master`
+
+Please keep pull requests focused and include a short description of what changed and why.
